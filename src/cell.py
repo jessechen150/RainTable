@@ -7,7 +7,7 @@ class LabelCellWidget(QLabel):
         super().__init__()
         self.setAutoFillBackground(True)
         palette = self.palette()
-        palette.setColor(QPalette.ColorRole.Window, QColor("#FFFFFF"))
+        palette.setColor(QPalette.ColorRole.Window, QColor("#DE0000"))
         self.setPalette(palette)
         self.setText(label)
         self.setAlignment(Qt.AlignmentFlag.AlignCenter)
