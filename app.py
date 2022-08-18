@@ -9,7 +9,7 @@ class MainWindow(QMainWindow):
         super().__init__()
         self.setWindowTitle("RainTable")
         self.setWindowIcon(QIcon("icons/water.png"))
-        self.resize(QSize(1920, 1080))
+        self.resize(QSize(1000, 500))
 
         # Setup
         self.row_LW = dict()
@@ -58,26 +58,38 @@ class MainWindow(QMainWindow):
                 weather = self.row_LW[row].get_weather(c-1)
                 temp = self.row_LW[row].get_temp(c-1)
                 pop = self.row_LW[row].get_POP(c-1)
-                item.setText(f"{pop * 100}% " + f"{weather[0]['description']}".capitalize())
+                item.setText(f"{weather[0]['description']}".capitalize())
                 item.setToolTip(f"Min: {temp['min']} F\nMax: {temp['max']} F")
 
                 code = weather[0]['id']
                 if code in range(200, 233):
                     item.setIcon(QIcon("icons/thunderstorm.png"))
+                    item.setBackground(QBrush(QColor("#C7A8B8")))
+                    item.setText(f"{weather[0]['description']} ({pop * 100}%)".capitalize())
                 elif code in range(300, 322):
                     item.setIcon(QIcon("icons/drizzle.png"))
+                    item.setBackground(QBrush(QColor("#D6EEFF")))
+                    item.setText(f"{weather[0]['description']} ({pop * 100}%)".capitalize())
                 elif code in range(500, 532):
                     item.setIcon(QIcon("icons/rain.png"))
+                    item.setBackground(QBrush(QColor("#99D5FF")))
+                    item.setText(f"{weather[0]['description']} ({pop * 100}%)".capitalize())
                 elif code in range(600, 623):
                     item.setIcon(QIcon("icons/snow.png"))
+                    item.setBackground(QBrush(QColor("#EBF7FF")))
+                    item.setText(f"{weather[0]['description']} ({pop * 100}%)".capitalize())
                 elif code in range(700, 782):
                     item.setIcon(QIcon("icons/fog.png"))
+                    item.setBackground(QBrush(QColor("#FFEBFC")))
                 elif code == 800:
                     item.setIcon(QIcon("icons/sunny.png"))
+                    item.setBackground(QBrush(QColor("#FFFED7")))
                 elif code == 801 or code == 802:
                     item.setIcon(QIcon("icons/cloudy.png"))
+                    item.setBackground(QBrush(QColor("#E0E0E1")))
                 elif code == 803 or code == 804:
                     item.setIcon(QIcon("icons/overcast.png"))
+                    item.setBackground(QBrush(QColor("#CCCCCC")))
 
 
 app = QApplication([])
