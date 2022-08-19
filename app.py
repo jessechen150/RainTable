@@ -40,6 +40,8 @@ class MainWindow(QMainWindow):
     def addLocation(self, row, col):
         if col == 0:
             address = self.table.item(row, col).text()
+            if not address:
+                return
 
             # If last row is edited, add another row
             if row == self.last_row:
